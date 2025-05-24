@@ -8,7 +8,10 @@
     body {
       margin: 0;
       background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -17,9 +20,29 @@
       max-width: 90%;
       height: auto;
     }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px dashed #fff;
+    }
+    .footer a:hover {
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
   <img src="logo-sem-fundo.png" alt="FloripaMoments Logo">
+
+  <div class="footer">
+    <a href="https://www.instagram.com/floripamoments" target="_blank" rel="noopener noreferrer">
+      Siga no Instagram: @floripamoments
+    </a>
+  </div>
 </body>
 </html>
