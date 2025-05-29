@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Floripa Moments</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: sans-serif;
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
+      background-color: #000;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    .description {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #ddd;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGO CENTRALIZADO -->
+  <header>
+    <img src="logo-sem-fundo.png" alt="Floripa Moments Logo" style="max-width: 300px;">
+  </header>
+
+  <!-- CONTAINER DO VÍDEO COM FALLBACK -->
+  <div id="video-container" class="video-container">
+    <video id="mainVideo" autoplay muted loop playsinline preload="metadata" poster="fallback.jpg">
+      <source src="videos/banner.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo HTML5.
+    </video>
+  </div>
+
+  <!-- DESCRIÇÃO -->
+  <section class="description">
+    <p><strong>Floripa Moments</strong> é um projeto visual que captura as paisagens mais inspiradoras da Grande Florianópolis através de drones.</p>
+    <p>São imagens autênticas, com luz natural e ângulos únicos que revelam a beleza do litoral catarinense. Perfeito para decorar, inspirar e se conectar com a natureza.</p>
+  </section>
+
+  <!-- SCRIPT PARA FALLBACK AUTOMÁTICO PARA VIMEO -->
+  <script>
+    const video = document.getElementById("mainVideo");
+    const container = document.getElementById("video-container");
+
+    const timeout = 3000; // 3 segundos para detectar lentidão
+    let fallbackTriggered = false;
+
+    const fallbackToVimeo = () => {
+      if (fallbackTriggered) return;
+      fallbackTriggered = true;
+
+      container.innerHTML = `
+        <iframe src="https://player.vimeo.com/video/78457c831c?autoplay=1&muted=1&loop=1&background=1"
+                style="width:100%; height:100vh; border:0;"
+                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+        </iframe>`;
+    };
+
+    const fallbackTimer = setTimeout(() => {
+      fallbackToVimeo();
+    }, timeout);
+
+    video.addEventListener("canplay", () => {
+      clearTimeout(fallbackTimer);
+    });
+
+    video.addEventListener("error", fallbackToVimeo);
+  </script>
+
+</body>
+</html>
