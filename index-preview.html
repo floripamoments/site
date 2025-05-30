@@ -136,7 +136,7 @@
       fallbackToVimeo();
     }, timeout);
 
-    video.addEventListener("canplay", () => {
+    video.addEventListener("playing", () => {
       const loader = document.getElementById("video-loader");
       if (loader) loader.style.display = "none";
       clearTimeout(fallbackTimer);
