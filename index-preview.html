@@ -129,7 +129,7 @@ const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
 if (isMobile) {
   container.innerHTML = `
-    <div id="vimeo-wrapper" style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000 url('loading.gif') center center / cover no-repeat;">
+    <div id="vimeo-wrapper" style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000 url('loading.gif') center center no-repeat; background-size: 120px 120px;">
       
       </div>
       <iframe id="vimeoMobile" src="https://player.vimeo.com/video/1089165441?h=5d54a6249c&autoplay=1&muted=1&loop=1&background=1" onload="hideSpinner()"
