@@ -124,18 +124,13 @@
 
   <script>
 const container = document.getElementById("video-container");
-function hideSpinner() {
-  const spinner = document.querySelector(".spinner-overlay");
-  if (spinner) spinner.style.display = "none";
-}
+
 const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
 if (isMobile) {
   container.innerHTML = `
-    <div id="vimeo-wrapper" style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000 url('thumbnail-mobile.jpg') center center / cover no-repeat;">
-      <div class="spinner-overlay">
-  <img src="loading.gif" alt="Carregando" style="width: 64px; height: 64px;">
-</div>
+    <div id="vimeo-wrapper" style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000 url('loading.gif') center center / cover no-repeat;">
+      
       </div>
       <iframe id="vimeoMobile" src="https://player.vimeo.com/video/1089165441?h=5d54a6249c&autoplay=1&muted=1&loop=1&background=1" onload="hideSpinner()"
               frameborder="0"
