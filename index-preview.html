@@ -123,15 +123,8 @@ function hideLoader() {
 }
 
 if (isMobile) {
-  container.innerHTML += `
-    <div id="vimeo-wrapper" style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000;">
-      <iframe id="vimeoMobile" src="https://player.vimeo.com/video/1089165441?h=5d54a6249c&autoplay=1&muted=1&loop=1&background=1"
-              frameborder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"
-              title="Floripa Moments">
-      </iframe>
-    </div>`;
+  container.innerHTML += `$1`;
+  hideLoader();
 
   const vimeoFrame = document.getElementById("vimeoMobile");
   if (vimeoFrame && loaderEl) {
