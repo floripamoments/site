@@ -124,21 +124,8 @@ if (isMobile) {
 
   const vimeoFrame = document.getElementById("vimeoMobile");
   if (vimeoFrame && loaderEl) {
-    let hidden = false;
     vimeoFrame.addEventListener("load", () => {
-      if (!hidden) {
-        loaderEl.style.opacity = "0";
-        setTimeout(() => loaderEl.style.display = "none", 1000);
-        hidden = true;
-      }
-    });
-    // Adicional: garantir que some após 8s em conexões lentas
-    setTimeout(() => {
-      if (!hidden) {
-        loaderEl.style.opacity = "0";
-        }
-    }, 8000);
-  }
+      loaderEl.style.opacity = "0";
       setTimeout(() => loaderEl.style.display = "none", 1000);
     });
   }
