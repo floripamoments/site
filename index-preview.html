@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Floripa Moments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      background-color: #000;
-      font-family: sans-serif;
-      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #fbe8a6;
+      color: #222;
     }
     header {
+      background-color: #000;
       text-align: center;
       padding: 2rem 1rem;
+    }
+    header img {
+      max-width: 250px;
+      width: 100%;
+      height: auto;
     }
     .video-container {
       position: relative;
@@ -28,72 +38,157 @@
       object-fit: cover;
       display: block;
     }
-    .description {
-      max-width: 800px;
+    section {
+      max-width: 1000px;
       margin: 2rem auto;
       padding: 0 1rem;
-      color: #ddd;
+    }
+    .description {
+      text-align: center;
       font-size: 1.1rem;
       line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+    .mockups, .posters, .videos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .mockups img, .posters img, .videos img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-radius: 6px;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin: 1rem auto;
       text-align: center;
+    }
+    .btn:hover {
+      background-color: #c0392b;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f4f4f4;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    @media (max-width: 600px) {
+      .description {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- LOGO CENTRALIZADO -->
   <header>
-    <img src="logo-sem-fundo.png" alt="Floripa Moments Logo" style="max-width: 300px;">
+    <img src="logo-sem-fundo.png" alt="Floripa Moments Logo">
   </header>
 
-  <!-- VÍDEO PRINCIPAL COM FALLBACK PARA VIMEO -->
   <div id="video-container" class="video-container">
-    <video id="mainVideo" autoplay muted loop playsinline preload="metadata" poster="fallback.jpg">
-      <source src="https://pub-331a764627ae46068a90b9fe7931f4ac.r2.dev/video-site-banner-2-lanczos.mp4" type="video/mp4">
-      Seu navegador não suporta vídeo HTML5.
-    </video>
-  </div>
+  <video id="mainVideo" autoplay muted loop playsinline preload="metadata" poster="fallback.jpg">
+    <source src="https://pub-331a764627ae46068a90b9fe7931f4ac.r2.dev/video-site-banner-2-lanczos.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo HTML5.
+  </video>
+</div>
 
-  <!-- DESCRIÇÃO DO PROJETO -->
+<script>
+  const video = document.getElementById("mainVideo");
+  const container = document.getElementById("video-container");
+  const timeout = 3000; // 3 segundos
+  let fallbackTriggered = false;
+
+  const fallbackToVimeo = () => {
+    if (fallbackTriggered) return;
+    fallbackTriggered = true;
+
+    container.innerHTML = `
+      <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe src="https://player.vimeo.com/video/1088870780?h=78457c831c&autoplay=1&muted=1&loop=1&background=1"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                title="Floripa Moments">
+        </iframe>
+      </div>
+      <script src="https://player.vimeo.com/api/player.js"><\/script>`;
+  };
+
+  const fallbackTimer = setTimeout(() => {
+    fallbackToVimeo();
+  }, timeout);
+
+  video.addEventListener("canplay", () => {
+    clearTimeout(fallbackTimer);
+  });
+
+  video.addEventListener("error", fallbackToVimeo);
+</script>
+
   <section class="description">
-    <p><strong>Floripa Moments</strong> é um projeto visual que captura as paisagens mais inspiradoras da Grande Florianópolis através de drones.</p>
-    <p>São imagens autênticas, com luz natural e ângulos únicos que revelam a beleza do litoral catarinense. Perfeito para decorar, inspirar e se conectar com a natureza.</p>
+    <p><strong>Floripa Moments</strong> é um projeto visual que captura as paisagens mais inspiradoras da Grande Florianópolis através de drones. O foco está na criação de vídeos artísticos e pôsteres de alta qualidade para decoração e licenciamento. Além disso, o projeto também realiza <strong>filmagens comerciais</strong>, incluindo eventos, vídeos institucionais, publicidade, estabelecimentos comerciais, marketing digital e até cenas para produções cinematográficas.</p>
   </section>
 
-  <!-- SCRIPT PARA FALLBACK AUTOMÁTICO PARA VIMEO -->
-  <script>
-    const video = document.getElementById("mainVideo");
-    const container = document.getElementById("video-container");
+  <section>
+    <h2 style="text-align:center">Mockups de Pôsteres</h2>
+    <div class="mockups">
+      <img src="mockup1.jpg" alt="Mockup 1">
+      <img src="mockup2.jpg" alt="Mockup 2">
+      <img src="mockup3.jpg" alt="Mockup 3">
+    </div>
+  </section>
 
-    const timeout = 3000; // 3 segundos para detectar lentidão
-    let fallbackTriggered = false;
+  <section>
+    <h2 style="text-align:center">Pôsteres disponíveis</h2>
+    <div class="posters">
+      <img src="poster1.jpg" alt="Poster 1">
+      <img src="poster2.jpg" alt="Poster 2">
+      <img src="poster3.jpg" alt="Poster 3">
+    </div>
+    <div style="text-align:center">
+      <a href="https://www.colab55.com/@floripamoments" target="_blank" class="btn">Ver loja na Colab55</a>
+    </div>
+  </section>
 
-    const fallbackToVimeo = () => {
-      if (fallbackTriggered) return;
-      fallbackTriggered = true;
+  <section>
+    <h2 style="text-align:center">Vídeos à venda na Adobe Stock</h2>
+    <div class="videos">
+  <a href="https://stock.adobe.com/br/contributor/212761346/FloripaMoments?asset_id=1503497935" target="_blank">
+    <img src="thumb1.jpg" alt="Vídeo 1">
+  </a>
+  <a href="https://stock.adobe.com/br/contributor/212761346/FloripaMoments?asset_id=1468339880" target="_blank">
+    <img src="thumb2.jpg" alt="Vídeo 2">
+  </a>
+  <a href="https://stock.adobe.com/br/contributor/212761346/FloripaMoments?asset_id=1468421621" target="_blank">
+    <img src="thumb3.jpg" alt="Vídeo 3">
+  </a>
+</div>
+    <div style="text-align:center">
+      <a href="https://stock.adobe.com/br/contributor/212761346/FloripaMoments" target="_blank" class="btn">Ver vídeos na Adobe Stock</a>
+    </div>
+  </section>
 
-      container.innerHTML = `
-        <div style="padding:56.25% 0 0 0;position:relative;">
-          <iframe src="https://player.vimeo.com/video/1088870780?h=78457c831c&autoplay=1&muted=1&loop=1&background=1"
-                  frameborder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                  style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                  title="Floripa Moments">
-          </iframe>
-        </div>
-        <script src="https://player.vimeo.com/api/player.js"><\/script>`;
-    };
+  <section class="description">
+  <p>Para dúvidas, sugestões, parcerias ou caso você queira adquirir uma imagem ou vídeo diretamente (sem passar pela Adobe Stock ou Colab55), entre em contato pelo e-mail: <a href="mailto:contato@floripamoments.com">contato@floripamoments.com</a></p>
+</section>
 
-    const fallbackTimer = setTimeout(() => {
-      fallbackToVimeo();
-    }, timeout);
-
-    video.addEventListener("canplay", () => {
-      clearTimeout(fallbackTimer);
-    });
-
-    video.addEventListener("error", fallbackToVimeo);
-  </script>
-
+  <footer>
+  © 2025 Floripa Moments – Todos os direitos reservados. <br>
+  Siga nas redes sociais:<br>
+  <a href="https://www.instagram.com/floripamoments" target="_blank">Instagram</a> |
+  <a href="https://www.youtube.com/@floripamoments" target="_blank">YouTube</a> |
+  <a href="https://www.tiktok.com/@floripamoments" target="_blank">TikTok</a>
+</footer>
 </body>
 </html>
