@@ -145,8 +145,12 @@
       clearTimeout(fallbackTimer);
     });
 
-    video.addEventListener("canplay", () => {
-      video.play().catch(() => {});
+    let bufferCheck = setInterval(() => {
+  if (video.buffered.length && video.buffered.end(0) >= 5) {
+    video.play().catch(() => {});
+    clearInterval(bufferCheck);
+  }
+}, 300);
     });
 
     video.addEventListener("error", fallbackToVimeo);
