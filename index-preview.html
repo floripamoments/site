@@ -89,6 +89,11 @@
         font-size: 1rem;
       }
     }
+      .hide-loader {
+      opacity: 0 !important;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -125,8 +130,9 @@ if (isMobile) {
   const vimeoFrame = document.getElementById("vimeoMobile");
   if (vimeoFrame && loaderEl) {
     vimeoFrame.addEventListener("load", () => {
-      loaderEl.style.opacity = "0";
-      setTimeout(() => loaderEl.style.display = "none", 1000);
+      if (loaderEl) {
+  loaderEl.classList.add("hide-loader");
+}
     });
   }
 
