@@ -104,7 +104,7 @@
         </circle>
       </svg>
     </div>
-    <video id="mainVideo" autoplay muted loop playsinline preload="metadata" poster="fallback.jpg">
+    <video id="mainVideo" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
       <source src="https://pub-331a764627ae46068a90b9fe7931f4ac.r2.dev/video-site-banner-2-lanczos.mp4" type="video/mp4">
       Seu navegador não suporta vídeo HTML5.
     </video>
@@ -113,7 +113,7 @@
   <script>
     const video = document.getElementById("mainVideo");
     const container = document.getElementById("video-container");
-    const timeout = 3000; // 3 segundos
+    const timeout = 5000; // 3 segundos
     let fallbackTriggered = false;
 
     const fallbackToVimeo = () => {
@@ -143,6 +143,10 @@
         setTimeout(() => loader.style.display = "none", 1000);
       }
       clearTimeout(fallbackTimer);
+    });
+
+    video.addEventListener("canplay", () => {
+      video.play().catch(() => {});
     });
 
     video.addEventListener("error", fallbackToVimeo);
