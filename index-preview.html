@@ -132,6 +132,22 @@ if (isMobile) {
   const vimeoFrame = document.getElementById("vimeoMobile");
   const loaderEl = document.getElementById("video-loader");
   if (vimeoFrame) {
+    let hasLoaded = false;
+    const observer = new MutationObserver(() => {
+      if (!hasLoaded && vimeoFrame.contentWindow) {
+        hasLoaded = true;
+        if (loaderEl) {
+          loaderEl.style.opacity = "0";
+          setTimeout(() => loaderEl.style.display = "none", 1000);
+        }
+      }
+    });
+    observer.observe(vimeoFrame, { attributes: true, childList: true, subtree: true });
+  }
+
+  const vimeoFrame = document.getElementById("vimeoMobile");
+  const loaderEl = document.getElementById("video-loader");
+  if (vimeoFrame) {
     vimeoFrame.onload = () => {
       if (loaderEl) {
         loaderEl.style.opacity = "0";
