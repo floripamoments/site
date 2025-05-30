@@ -115,6 +115,12 @@
 const container = document.getElementById("video-container");
 const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 const loaderEl = document.getElementById("video-loader");
+function hideLoader() {
+  if (loaderEl) {
+    loaderEl.style.opacity = "0";
+    setTimeout(() => loaderEl.style.display = "none", 1000);
+  }
+}
 
 if (isMobile) {
   container.innerHTML += `
@@ -130,10 +136,8 @@ if (isMobile) {
   const vimeoFrame = document.getElementById("vimeoMobile");
   if (vimeoFrame && loaderEl) {
     vimeoFrame.addEventListener("load", () => {
-      if (loaderEl) {
-  loaderEl.classList.add("hide-loader");
-}
-    });
+  hideLoader();
+});
   }
 
 } else {
@@ -146,10 +150,9 @@ if (isMobile) {
   const video = document.getElementById("mainVideo");
 
   video.addEventListener("timeupdate", () => {
-    if (video.currentTime > 0.1 && loaderEl) {
-      loaderEl.style.opacity = "0";
-      setTimeout(() => loaderEl.style.display = "none", 1000);
-    }
+    if (video.currentTime > 0.1) {
+  hideLoader();
+}
   });
 
   let bufferCheck = setInterval(() => {
