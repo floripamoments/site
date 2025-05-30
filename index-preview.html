@@ -113,7 +113,14 @@ const loader = document.getElementById("video-loader");
 const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
 if (isMobile) {
-  container.innerHTML += `
+  container.innerHTML = `
+    <div id="video-loader" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;transition: opacity 0.5s ease; background: rgba(0,0,0,0.4); border-radius: 50%; padding: 1rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" style="margin:auto;display:block" width="64px" height="64px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+          <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+        </circle>
+      </svg>
+    </div>
     <div style="position:relative;padding-top:100%;">
       <iframe src="https://player.vimeo.com/video/1088870780?h=78457c831c&autoplay=1&muted=1&loop=1&background=1"
               frameborder="0"
@@ -122,12 +129,22 @@ if (isMobile) {
               title="Floripa Moments">
       </iframe>
     </div>`;
-  if (loader) {
-    loader.style.opacity = "0";
-    setTimeout(() => loader.style.display = "none", 1000);
+
+  const loaderEl = document.getElementById("video-loader");
+  if (loaderEl) {
+    loaderEl.style.opacity = "0";
+    setTimeout(() => loaderEl.style.display = "none", 1000);
   }
+
 } else {
-  container.innerHTML += `
+  container.innerHTML = `
+    <div id="video-loader" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;transition: opacity 0.5s ease; background: rgba(0,0,0,0.4); border-radius: 50%; padding: 1rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" style="margin:auto;display:block" width="64px" height="64px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+          <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+        </circle>
+      </svg>
+    </div>
     <video id="mainVideo" autoplay muted loop playsinline preload="auto" poster="fallback.jpg" style="width:100%; height:auto;">
       <source src="https://pub-331a764627ae46068a90b9fe7931f4ac.r2.dev/video-site-banner-2-lanczos.mp4" type="video/mp4">
       Seu navegador não suporta vídeo HTML5.
@@ -155,6 +172,7 @@ if (isMobile) {
 
   video.addEventListener("timeupdate", () => {
     if (video.currentTime > 0.1) {
+      const loader = document.getElementById("video-loader");
       if (loader) {
         loader.style.opacity = "0";
         setTimeout(() => loader.style.display = "none", 1000);
@@ -170,7 +188,7 @@ if (isMobile) {
   }, 300);
 
   video.addEventListener("error", fallbackToVimeo);
-} 
+}
 </script>    
 
     window.addEventListener("load", () => {
