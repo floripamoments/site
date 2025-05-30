@@ -120,11 +120,11 @@ if (isMobile) {
         </circle>
       </svg>
     </div>
-    <div style="position:relative;padding-top:100%;">
+    <div style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000;">
       <iframe src="https://player.vimeo.com/video/1088870780?h=78457c831c&autoplay=1&muted=1&loop=1&background=1"
               frameborder="0"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              style="position:absolute;top:0;left:0;width:100%;height:100%;"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"
               title="Floripa Moments">
       </iframe>
     </div>`;
@@ -144,30 +144,12 @@ if (isMobile) {
         </circle>
       </svg>
     </div>
-    <video id="mainVideo" autoplay muted loop playsinline preload="auto" poster="fallback.jpg" style="width:100%; height:auto;">
+    <video id="mainVideo" autoplay muted loop playsinline preload="auto" poster="fallback.jpg" style="width:100%; height:auto; object-fit:cover;">
       <source src="https://pub-331a764627ae46068a90b9fe7931f4ac.r2.dev/video-site-banner-2-lanczos.mp4" type="video/mp4">
       Seu navegador não suporta vídeo HTML5.
     </video>`;
 
   const video = document.getElementById("mainVideo");
-  let fallbackTriggered = false;
-
-  const fallbackToVimeo = () => {
-    if (fallbackTriggered) return;
-    fallbackTriggered = true;
-    container.innerHTML = `
-      <div style="position:relative;padding-top:56.25%;">
-        <iframe src="https://player.vimeo.com/video/1088870780?h=78457c831c&autoplay=1&muted=1&loop=1&background=1"
-                frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                title="Floripa Moments">
-        </iframe>
-      </div>`;
-  };
-
-  const timeout = 5000;
-  const fallbackTimer = setTimeout(fallbackToVimeo, timeout);
 
   video.addEventListener("timeupdate", () => {
     if (video.currentTime > 0.1) {
@@ -186,7 +168,17 @@ if (isMobile) {
     }
   }, 300);
 
-  video.addEventListener("error", fallbackToVimeo);
+  video.addEventListener("error", () => {
+    container.innerHTML = `
+      <div style="position:relative;padding-top:56.25%;">
+        <iframe src="https://player.vimeo.com/video/1088870780?h=78457c831c&autoplay=1&muted=1&loop=1&background=1"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"
+                title="Floripa Moments">
+        </iframe>
+      </div>`;
+  });
 }
 </script>    
 
