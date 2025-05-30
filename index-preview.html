@@ -108,12 +108,8 @@
 const container = document.getElementById("video-container");
 const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
-
-}
-}
-
 if (isMobile) {
-  container.innerHTML += `
+  container.innerHTML = `
     <div id="vimeo-wrapper" style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000;">
       <iframe id="vimeoMobile" src="https://player.vimeo.com/video/1089165441?h=5d54a6249c&autoplay=1&muted=1&loop=1&background=1"
               frameborder="0"
@@ -123,46 +119,12 @@ if (isMobile) {
       </iframe>
     </div>`;
 
-  const vimeoFrame = document.getElementById("vimeoMobile");
-  if (vimeoFrame && loaderEl) {
-    vimeoFrame.addEventListener("load", () => {
-  hideLoader();
-});
-  }
-
 } else {
-  container.innerHTML += `
+  container.innerHTML = `
     <video id="mainVideo" autoplay muted loop playsinline preload="auto" poster="fallback.jpg" style="width:100%; height:auto; object-fit:cover;">
       <source src="https://pub-331a764627ae46068a90b9fe7931f4ac.r2.dev/video-site-banner-2-lanczos.mp4" type="video/mp4">
       Seu navegador não suporta vídeo HTML5.
     </video>`;
-
-  const video = document.getElementById("mainVideo");
-
-  video.addEventListener("timeupdate", () => {
-    if (video.currentTime > 0.1) {
-  hideLoader();
-}
-  });
-
-  let bufferCheck = setInterval(() => {
-    if (video.buffered.length && video.buffered.end(0) >= 1.5) {
-      video.play().catch(() => {});
-      clearInterval(bufferCheck);
-    }
-  }, 300);
-
-  video.addEventListener("error", () => {
-    container.innerHTML = `
-      <div style="position:relative;padding-top:56.25%;">
-        <iframe src="https://player.vimeo.com/video/1088870780?h=78457c831c&autoplay=1&muted=1&loop=1&background=1"
-                frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"
-                title="Floripa Moments">
-        </iframe>
-      </div>`;
-  });
 }
 </script>
 
