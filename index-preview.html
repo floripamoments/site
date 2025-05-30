@@ -146,12 +146,21 @@
     });
 
     let bufferCheck = setInterval(() => {
-  if (video.buffered.length && video.buffered.end(0) >= 5) {
+  if (video.buffered.length && video.buffered.end(0) >= 1.5) {
     video.play().catch(() => {});
     clearInterval(bufferCheck);
   }
 }, 300);
-    });
+
+video.addEventListener("timeupdate", () => {
+  if (video.currentTime > 0.1) {
+    const loader = document.getElementById("video-loader");
+    if (loader) {
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 1000);
+    }
+  }
+});
 
     video.addEventListener("error", fallbackToVimeo);
 
