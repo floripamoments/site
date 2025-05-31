@@ -16,7 +16,7 @@
       color: #222;
     }
     header {
-      background-color: #000;
+      background-color: #b3d9ff;
       text-align: center;
       padding: 2rem 1rem;
     }
@@ -78,9 +78,7 @@
       background-color: #c0392b;
     }
     footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #f4f4f4;
+      background-color: #e6d18e;
       font-size: 0.9rem;
       color: #666;
     }
@@ -129,7 +127,7 @@ const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
 if (isMobile) {
   container.innerHTML = `
-    <div id="vimeo-wrapper" style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000 url('loading.gif') center center no-repeat; background-size: 120px 120px;">
+    <div id="vimeo-wrapper" style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000 url('loading.gif') center center no-repeat; background-size: 80px 80px;">
       
       </div>
       <iframe id="vimeoMobile" src="https://player.vimeo.com/video/1089165441?h=5d54a6249c&autoplay=1&muted=1&loop=1&background=1" onload="hideSpinner()"
