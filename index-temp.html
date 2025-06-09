@@ -1,48 +1,247 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FloripaMoments</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagens Aéreas da Grande Florianópolis – Pôsteres e Vídeos com Drone</title>
+  <meta name="description" content="Explore imagens aéreas exclusivas da Grande Florianópolis. Compre pôsteres decorativos, vídeos em 4K com drone e contrate filmagens comerciais personalizadas.">
+  <meta name="keywords" content="Floripa Moments, drone Grande Florianópolis, pôsteres Grande Florianópolis, vídeos Grande Florianópolis, imagens aéreas, Grande Florianópolis, vídeos com drone, pôster de paisagem, vídeos comerciais Grande Florianópolis">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Floripa Moments - Pôsteres e Vídeos da Grande Florianópolis com Drone">
+  <meta property="og:description" content="Imagens aéreas incríveis da Grande Florianópolis, pôsteres e vídeos para venda e uso comercial.">
+  <meta property="og:image" content="https://floripamoments.com/imagem-compartilhamento.jpg">
+  <meta property="og:url" content="https://floripamoments.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Floripa Moments - Pôsteres e Vídeos da Grande Florianópolis com Drone">
+  <meta name="twitter:description" content="Explore vídeos e pôsteres únicos da Grande Florianópolis capturados por drones.">
+  <meta name="twitter:image" content="https://floripamoments.com/imagem-compartilhamento.jpg">
+  <link rel="canonical" href="https://floripamoments.com">
+  <link rel="alternate" hreflang="pt-br" href="https://floripamoments.com">
+  <link rel="alternate" hreflang="x-default" href="https://floripamoments.com">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  <meta name="google-site-verification" content="Iq-jsoHygyiiq7TBi0rmUPrqy81XQB0JzULps8ju4hk" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PN1BZ85XL9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PN1BZ85XL9');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Floripa Moments",
+    "url": "https://floripamoments.com",
+    "logo": "https://floripamoments.com/logo-floripamoments-topo.png",
+    "sameAs": [
+      "https://www.instagram.com/floripamoments",
+      "https://www.youtube.com/@floripamoments",
+      "https://www.tiktok.com/@floripamoments"
+    ]
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffa800;
+      color: #222;
+    }
+    header {
+      background: url('fundo-topo-por-do-sol.png') repeat-x center top;
+      background-size: auto 110px;
+      height: 110px;
+      text-align: center;
+    }
+    header img {
+      height: 110px;
+      width: auto;
+      margin: 0 auto;
+      display: block;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
       background-color: #000;
-      color: #fff;
-      font-family: sans-serif;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .description h1 {
+      font-size: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .description p {
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .posters, .mockups, .videos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .posters::before {
+      content: "Clique na imagem ou no botão abaixo para comprar o pôster diretamente na Colab55.";
+      display: block;
+      font-size: 1rem;
+      color: #444;
+      text-align: center;
+      margin: 2rem 0 1.5rem;
+    }
+    .posters a, .mockups a {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
     }
-    img {
-      max-width: 90%;
+    .posters img, .videos img {
+      max-width: 280px;
+      width: 100%;
       height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .footer {
-      position: absolute;
-      bottom: 20px;
+    .mockups {
+      flex-direction: column;
+      align-items: center;
+    }
+    .mockups img {
+      width: 100%;
+      max-width: 840px;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .btn, .buy-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
       text-align: center;
+      margin: 0.5rem auto;
       font-size: 0.9rem;
     }
-    .footer a {
-      color: #fff;
-      text-decoration: none;
-      border-bottom: 1px dashed #fff;
+    .btn:hover, .buy-button:hover {
+      background-color: #c0392b;
     }
-    .footer a:hover {
-      opacity: 0.8;
+    footer {
+      background-color: #fb7e00;
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+      padding: 1rem 0;
     }
   </style>
 </head>
 <body>
-  <img src="logo-sem-fundo.png" alt="FloripaMoments Logo">
-
-  <div class="footer">
-    <a href="https://www.instagram.com/floripamoments" target="_blank" rel="noopener noreferrer">
-      Siga no Instagram: @floripamoments
-    </a>
-  </div>
+  <header>
+    <img src="logo-floripamoments-topo.png" alt="Logotipo Floripa Moments">
+  </header>
+  <div id="video-container" class="video-container"></div>
+  <script>
+    const container = document.getElementById("video-container");
+    const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+    if (isMobile) {
+      container.innerHTML = `<div style='position:relative;width:100%;padding-top:100%;overflow:hidden;background:#000 url("loading.gif") center center no-repeat; background-size:80px;'>
+        <iframe src='https://player.vimeo.com/video/1089165441?h=5d54a6249c&autoplay=1&muted=1&loop=1&background=1'
+          frameborder='0'
+          allow='autoplay; fullscreen; picture-in-picture'
+          style='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;'></iframe>
+      </div>`;
+    } else {
+      container.innerHTML = `<video autoplay muted loop playsinline preload='auto' poster='fallback.jpg'>
+        <source src='https://pub-331a764627ae46068a90b9fe7931f4ac.r2.dev/video-site-banner-2-lanczos.mp4' type='video/mp4'>
+        Seu navegador não suporta vídeo HTML5.
+      </video>`;
+    }
+  </script>
+  <section class="description">
+    <h1>Imagens Aéreas da Grande Florianópolis</h1>
+    <p><strong>Floripa Moments</strong> é um projeto visual que captura as paisagens mais inspiradoras da Grande Florianópolis através de drones. O foco está na criação de vídeos artísticos e pôsteres de alta qualidade para decoração e licenciamento. Além disso, o projeto também realiza <strong>filmagens comerciais</strong>, incluindo eventos, vídeos institucionais, publicidade, estabelecimentos comerciais, marketing digital e até cenas para produções cinematográficas.</p>
+  </section>
+  <section>
+    <h2 style="text-align:center">Alguns dos pôsteres disponíveis</h2>
+    <div class="posters">
+      <a href="https://www.colab55.com/@floripamoments/posters/morro-das-pedras-armacao-e-matadeiro" target="_blank">
+        <img src="mockup-poster-morro-das-pedras-a-armacao.png" alt="Pôster Morro das Pedras, Armação e Matadeiro">
+        <span class="buy-button">Comprar</span>
+      </a>
+      <a href="https://www.colab55.com/@floripamoments/posters/por-do-sol-na-lagoa-da-conceicao" target="_blank">
+        <img src="mockup-poster-lagoa-da-conceicao-por-do-sol.png" alt="Pôster Pôr-do-sol na Lagoa da Conceição">
+        <span class="buy-button">Comprar</span>
+      </a>
+      <a href="https://www.colab55.com/@floripamoments/posters/costao-da-guarda-e-o-encontro-do-rio-com-o-mar" target="_blank">
+        <img src="mockup-poster-guarda-rio-encontra-mar.png" alt="Pôster Costão da Guarda e o Encontro do Rio com o Mar">
+        <span class="buy-button">Comprar</span>
+      </a>
+    </div>
+  </section>
+  <section>
+    <h2 style="text-align:center">Alguns exemplos de como eles ficam na parede</h2>
+    <div class="mockups">
+      <a href="https://www.colab55.com/@floripamoments/posters/morro-das-pedras-armacao-e-matadeiro" target="_blank">
+        <img src="mockup-morro-das-pedras-a-armacao.png" alt="Mockup do pôster Morro das Pedras, Armação e Matadeiro na parede">
+        <span class="buy-button">Comprar</span>
+      </a>
+      <a href="https://www.colab55.com/@floripamoments/posters/por-do-sol-na-lagoa-da-conceicao" target="_blank">
+        <img src="mockup1-lagoa-da-conceicao-por-do-sol.png" alt="Mockup do pôster pôr-do-sol na Lagoa da Conceição na parede">
+        <span class="buy-button">Comprar</span>
+      </a>
+      <a href="https://www.colab55.com/@floripamoments/posters/costao-da-guarda-e-o-encontro-do-rio-com-o-mar" target="_blank">
+        <img src="mockup-guarda-rio-encontra-mar.png" alt="Mockup do pôster do encontro do rio com o mar na parede">
+        <span class="buy-button">Comprar</span>
+      </a>
+    </div>
+    <div style="text-align:center">
+      <a href="https://www.colab55.com/@floripamoments" class="btn" target="_blank">Veja todos os pôsteres disponíveis</a>
+    </div>
+  </section>
+  <section>
+    <h2 style="text-align:center">Alguns dos vídeos à venda na Adobe Stock</h2>
+    <div class="videos">
+      <a href="https://stock.adobe.com/br/contributor/212761346/FloripaMoments?asset_id=1503497935" target="_blank">
+        <img src="thumb-video-lagoa-1.jpg" alt="Thumb do vídeo Lagoa da Conceição - Floripa Moments">
+      </a>
+      <a href="https://stock.adobe.com/br/contributor/212761346/FloripaMoments?asset_id=1468339880" target="_blank">
+        <img src="thumb-video-guarda-1.jpg" alt="Thumb do vídeo Guarda do Embaú Palhoça - Floripa Moments">
+      </a>
+      <a href="https://stock.adobe.com/br/contributor/212761346/FloripaMoments?asset_id=1468421621" target="_blank">
+        <img src="thumb-video-guarda-2.jpg" alt="Thumb do vídeo Guarda do Embaú vista aérea - Floripa Moments">
+      </a>
+    </div>
+    <div style="text-align:center">
+      <a href="https://stock.adobe.com/br/contributor/212761346/FloripaMoments" class="btn" target="_blank">Veja mais vídeos disponíveis</a>
+    </div>
+  </section>
+  <section class="description">
+    <p>Para dúvidas, sugestões, parcerias ou caso você queira adquirir uma imagem ou vídeo diretamente (sem passar pela Adobe Stock ou Colab55), entre em contato pelo e-mail: <a href="mailto:contato@floripamoments.com">contato@floripamoments.com</a></p>
+  </section>
+  <footer>
+    © 2025 Floripa Moments – Todos os direitos reservados.<br>
+    Siga nas redes sociais:<br>
+    <a href="https://www.instagram.com/floripamoments" target="_blank">Instagram</a> |
+    <a href="https://www.youtube.com/@floripamoments" target="_blank">YouTube</a> |
+    <a href="https://www.tiktok.com/@floripamoments" target="_blank">TikTok</a>
+  </footer>
 </body>
 </html>
